@@ -30,7 +30,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.unitconverter.ui.theme.UnitConverterTheme
@@ -77,20 +79,29 @@ fun UnitConverter() {
         horizontalAlignment = Alignment.CenterHorizontally
 
     ) {
-        Text(text = "Unit Converter")
+        Text(text = "Unit Converter",
+              style = MaterialTheme.typography.headlineMedium,
+                      fontFamily = FontFamily.Monospace
+            )
         Spacer(modifier = Modifier.height(16.dp))
         OutlinedTextField(value = inputValue, onValueChange = {
             inputValue=it
             convertUnits()
         },
-            label = { Text(text = "Enter Value")})
-        Spacer(modifier = Modifier.height(16.dp))
+            label = { Text(text = "Enter Value",
+                 style = MaterialTheme.typography.headlineMedium,
+                fontFamily = FontFamily.Monospace
+                )})
+        Spacer(modifier = Modifier.height(18.dp))
         Row {
             // input box
             Box {
                 // input button
                 Button(onClick = { iExpanded = true }) {
-                    Text(text = inputUnit)
+                    Text(text = inputUnit,
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontFamily = FontFamily.Monospace
+                        )
                     Icon(
                         Icons.Default.ArrowDropDown,
                         contentDescription = "Arrow Down"
@@ -123,12 +134,15 @@ fun UnitConverter() {
                     })
                 }
             }
-            Spacer(modifier = Modifier.width(16.dp))
+            Spacer(modifier = Modifier.width(18.dp))
             // output box
             Box {
                 // output button
                 Button(onClick = { oExpanded = true }) {
-                    Text(text = outputUnit)
+                    Text(text = outputUnit,
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontFamily = FontFamily.Monospace
+                        )
                     Icon(
                         Icons.Default.ArrowDropDown,
                         contentDescription = "Arrow Down"
@@ -163,7 +177,10 @@ fun UnitConverter() {
             }
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Results: $outputValue $outputUnit")
+        Text(text = "Results: $outputValue $outputUnit",
+              style = MaterialTheme.typography.headlineMedium,
+            fontFamily = FontFamily.Monospace
+            )
     }
 }
 
